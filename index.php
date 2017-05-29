@@ -8,7 +8,7 @@ $content = $source->getElementsByTagName('content');
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
 } else {
-   $page = 0; 
+   $page = 1; 
 }
 ?>
 <!DOCTYPE html>
@@ -16,6 +16,7 @@ if (isset($_GET['page'])) {
     <head>
         <meta charset="utf-8">
         <link href="bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="style.css" rel="stylesheet" type="text/css"/>
         <title><?php echo $title->item($page)->nodeValue; ?></title>
     </head>
     <body>
@@ -25,7 +26,7 @@ if (isset($_GET['page'])) {
                     <ul class="nav navbar-nav">
                         <?php
                         foreach ($pages as $id => $pages_cont) {
-                                $attrib = $pages_cont->getAttribute('id') - 1;
+                                $attrib = $pages_cont->getAttribute('id');
                                 $menu = $pages_cont->getElementsByTagName('menu');
                                 ?>
                                 <li class="active"><a href="<?php echo $attrib; ?>.html"><?= $menu->item(0)->nodeValue; ?></a>
@@ -39,6 +40,6 @@ if (isset($_GET['page'])) {
                 </div>
             </div>
         </nav>
-       <p><?php echo $content->item($page)->nodeValue; ?></p>
+        <div class="white"><?php echo $content->item($page -1)->nodeValue; ?></div>
     </body>
 </html>
