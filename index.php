@@ -28,7 +28,7 @@ if (isset($_GET['page'])) {
                                 $attrib = $pages_cont->getAttribute('id') - 1;
                                 $menu = $pages_cont->getElementsByTagName('menu');
                                 ?>
-                                <li class="active"><a href="index.php?<?php echo 'page=' . $attrib; ?>"><?= $menu->item(0)->nodeValue; ?></a>
+                                <li class="active"><a href="<?php echo $attrib; ?>.html"><?= $menu->item(0)->nodeValue; ?></a>
 
                                 </li>
 
