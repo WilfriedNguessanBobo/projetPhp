@@ -8,15 +8,16 @@ $content = $source->getElementsByTagName('content');
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
 } else {
-    $page = 0;
+   $page = 1; 
 }
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
+        <link href="bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="style.css" rel="stylesheet" type="text/css"/>
         <title><?php echo $title->item($page)->nodeValue; ?></title>
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <nav class="navbar navbar-default">
@@ -25,17 +26,20 @@ if (isset($_GET['page'])) {
                     <ul class="nav navbar-nav">
                         <?php
                         foreach ($pages as $id => $pages_cont) {
-                            $attrib = $pages_cont->getAttribute('id') - 1;
-                            $menu = $pages_cont->getElementsByTagName('menu');
-                            ?>
-                            <li class="active"><a href="index.php?<?php echo 'page=' . $attrib; ?>"><?= $menu->item(0)->nodeValue; ?></a></li>
+                                $attrib = $pages_cont->getAttribute('id');
+                                $menu = $pages_cont->getElementsByTagName('menu');
+                                ?>
+                                <li class="active"><a href="<?php echo $attrib; ?>.html"><?= $menu->item(0)->nodeValue; ?></a>
+
+                                </li>
+
                                 <?php
                             }
-                            ?>
+                        ?>
                     </ul>
                 </div>
             </div>
         </nav>
-        <p><?php echo $content->item($page)->nodeValue; ?></p>  
+        <div class="white"><?php echo $content->item($page -1)->nodeValue; ?></div>
     </body>
 </html>
