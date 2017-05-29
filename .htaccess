@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+# Le serveur doit suivre les liens symboliques :
+Options +FollowSymlinks
+# Activation du module de réécriture d'URL :
+RewriteEngine on
+
+   RewriteBase /
+
+# Réécriture de index.html vers index.php 
+#RewriteRule ^/tp/index.php$  /tp/calendar [R=301]
+#RewriteCond %{QUERY_STRING} ([0-9])$
+RewriteRule    ^([0-9]+)\.html$   index.php?page=$1 
+</IfModule>
